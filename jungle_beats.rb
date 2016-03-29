@@ -1,2 +1,0 @@
-require './node'
-require './linkedlist'
