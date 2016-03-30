@@ -1,16 +1,14 @@
 require_relative 'node'
 
 class LinkedList
-  attr_reader :head, :count
+  attr_reader :head
 
   def initialize
     @head = nil
-    @count = 0
     @string = ""
   end
 
   def append(data)
-    @count += 1
     if @head == nil
       @head = Node.new(data)
     else
@@ -24,14 +22,12 @@ class LinkedList
   end
 
   def prepend(data)
-    @count += 1
     next_node = @head
     @head = Node.new(data)
     @head.next_node = next_node
   end
 
   def insert(position, data)
-    @count += 1
     position_counter = 0
     current_node = @head
     while position_counter != position
@@ -83,6 +79,16 @@ class LinkedList
     popped_string
   end
 
+  def count
+    current_node = @head
+    counter = 1
+    while current_node.next_node != nil
+      counter += 1
+      current_node = current_node.next_node
+    end
+    counter
+  end
+
   def to_string
     current_node = @head
     while current_node != nil
@@ -91,5 +97,15 @@ class LinkedList
     end
     @string.rstrip
   end
+
+  def to_s
+    current_node = @head
+    while current_node != nil
+      @string += current_node.data + " "
+      current_node = current_node.next_node
+    end
+    @string.rstrip
+  end
+
 
 end

@@ -151,4 +151,31 @@ class LinkedListTest < Minitest::Test
     assert_equal "doop deep woo shi boom shu five blop beep boop", list.to_string
   end
 
+  def test_edge_string
+    list = LinkedList.new
+    list.append("doop")
+    list.append("deep")
+    list.prepend("dop")
+    list.append("suu")
+    list.prepend("plop")
+    assert_equal "plop dop doop deep suu", list.to_s
+  end
+
+  def test_more_edge_strings
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
+    list.insert(2, "boom")
+    list.append("beep")
+    list.append("boop")
+    list.prepend("doop")
+    list.insert(5, "five")
+    assert_equal "doop deep woo shi boom shu five blop beep boop", list.to_s
+  end
+
+
+
 end
