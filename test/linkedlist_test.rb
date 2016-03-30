@@ -61,6 +61,16 @@ class LinkedListTest < Minitest::Test
     assert_equal "deep", list.find(0, 1)
   end
 
+  def test_find_nodes
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
+    assert_equal true, list.includes?("deep")
+  end
+
   def test_count_nodes
     list = LinkedList.new
     list.append("doop")

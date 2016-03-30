@@ -61,6 +61,18 @@ class LinkedList
     find_string.rstrip
   end
 
+  def includes?(data)
+    current_node = @head
+    while current_node.data != data
+      if current_node.next_node == nil
+        break
+      else
+        current_node = current_node.next_node
+      end
+    end
+    current_node.data == data
+  end
+
   def to_string
     current_node = @head
     while current_node != nil
