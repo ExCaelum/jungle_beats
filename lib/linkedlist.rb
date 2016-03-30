@@ -83,19 +83,6 @@ class LinkedList
     popped_string
   end
 
-  # def pop
-  #   list = LinkedList.new
-  #   current_node = @head
-  #   while current_node.next_node != nil
-  #     list.append(current_node.data)
-  #     current_node = current_node.next_node
-  #   end
-  #   binding.pry
-  #   popped_string = current_node.data
-  #   current_node = nil
-  #   popped_string
-  # end
-
   def to_string
     current_node = @head
     while current_node != nil
