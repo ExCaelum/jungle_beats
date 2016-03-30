@@ -58,10 +58,20 @@ class LinkedListTest < Minitest::Test
     list.append("shu")
     list.append("blop")
     list.prepend("deep")
+    assert_equal "shi", list.find(2, 1)
+  end
+
+  def test_find_other_nodes
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
     assert_equal "deep", list.find(0, 1)
   end
 
-  def test_find_nodes
+  def test_includes_when_node_exists
     list = LinkedList.new
     list.append("woo")
     list.append("shi")
@@ -69,6 +79,16 @@ class LinkedListTest < Minitest::Test
     list.append("blop")
     list.prepend("deep")
     assert_equal true, list.includes?("deep")
+  end
+
+  def test_includes_when_node_does_not_exist
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
+    assert_equal false, list.includes?("blam")
   end
 
   def test_count_nodes
@@ -79,6 +99,21 @@ class LinkedListTest < Minitest::Test
     assert_equal 3, list.count
   end
 
+  def test_count_more_nodes
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
+    list.insert(2, "boom")
+    list.append("beep")
+    list.append("boop")
+    list.prepend("doop")
+    list.insert(5, "five")
+    assert_equal 10, list.count
+  end
+
   def test_to_string
     list = LinkedList.new
     list.append("doop")
@@ -87,6 +122,21 @@ class LinkedListTest < Minitest::Test
     list.append("suu")
     list.prepend("plop")
     assert_equal "plop dop doop deep suu", list.to_string
+  end
+
+  def test_to_other_string
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
+    list.insert(2, "boom")
+    list.append("beep")
+    list.append("boop")
+    list.prepend("doop")
+    list.insert(5, "five")
+    assert_equal "doop deep woo shi boom shu five blop beep boop", list.to_string
   end
 
 end
