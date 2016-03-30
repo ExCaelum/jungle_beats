@@ -39,6 +39,7 @@ class LinkedListTest < Minitest::Test
     list.append("plop")
     list.append("suu")
     list.prepend("dop")
+    assert_equal "dop", list.head.data
   end
 
   def test_insert_node
@@ -48,6 +49,16 @@ class LinkedListTest < Minitest::Test
     list.prepend("dop")
     list.insert(1, "woo")
     assert_equal "woo", list.head.next_node.next_node.data
+  end
+
+  def test_find_nodes
+    list = LinkedList.new
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+    list.prepend("deep")
+    assert_equal "deep", list.find(0, 1)
   end
 
   def test_count_nodes

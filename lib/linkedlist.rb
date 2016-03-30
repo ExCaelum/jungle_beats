@@ -44,6 +44,23 @@ class LinkedList
     new_node.next_node = next_node
   end
 
+  def find(position, element)
+    find_string = ""
+    position_counter = 0
+    element_counter = 0
+    current_node = @head
+    while position_counter != position
+      current_node = current_node.next_node
+      position_counter += 1
+    end
+    while element_counter != element
+      find_string += current_node.data + " "
+      current_node = current_node.next_node
+      element_counter += 1
+    end
+    find_string.rstrip
+  end
+
   def to_string
     current_node = @head
     while current_node != nil
