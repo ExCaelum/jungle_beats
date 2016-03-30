@@ -34,6 +34,11 @@ class LinkedListTest < Minitest::Test
     assert_equal "deep", list.head.next_node.data
   end
 
+  def test_cant_append_invalid_beats
+    list = LinkedList.new
+    assert_equal "Please enter a valid beat, to see a list of valid beats enter 'which_beats?'", list.append("woo")
+  end
+
   def test_prepended_node_is_head
     list = LinkedList.new
     list.append("plop")
@@ -44,16 +49,29 @@ class LinkedListTest < Minitest::Test
 
   def test_insert_node
     list = LinkedList.new
-    list.append("plop")
-    list.append("suu")
-    list.prepend("dop")
-    list.insert(1, "woo")
-    assert_equal "woo", list.head.next_node.next_node.data
+    list.append("boop")
+    list.append("shi")
+    list.prepend("shu")
+    list.append("blop")
+    list.append("bleep")
+    list.insert(3, "plop")
+    assert_equal "plop", list.head.next_node.next_node.data
+  end
+
+  def test_insert_node_at_head
+    list = LinkedList.new
+    list.append("boop")
+    list.append("shi")
+    list.prepend("shu")
+    list.append("blop")
+    list.append("bleep")
+    list.insert(1, "plop")
+    assert_equal "plop", list.head.data
   end
 
   def test_find_nodes
     list = LinkedList.new
-    list.append("woo")
+    list.append("plop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -63,7 +81,7 @@ class LinkedListTest < Minitest::Test
 
   def test_find_other_nodes
     list = LinkedList.new
-    list.append("woo")
+    list.append("plop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -73,7 +91,7 @@ class LinkedListTest < Minitest::Test
 
   def test_includes_when_node_exists
     list = LinkedList.new
-    list.append("woo")
+    list.append("plop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -83,7 +101,7 @@ class LinkedListTest < Minitest::Test
 
   def test_includes_when_node_does_not_exist
     list = LinkedList.new
-    list.append("woo")
+    list.append("plop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -93,14 +111,14 @@ class LinkedListTest < Minitest::Test
 
   def test_pop_returns_and_removes_tail
     list = LinkedList.new
-    list.append("woo")
+    list.append("plop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
     list.prepend("deep")
     assert_equal "blop", list.pop
     assert_equal "shu", list.pop
-    assert_equal "deep woo shi", list.to_string
+    assert_equal "deep plop shi", list.to_string
   end
 
   def test_count_nodes
@@ -113,7 +131,7 @@ class LinkedListTest < Minitest::Test
 
   def test_count_more_nodes
     list = LinkedList.new
-    list.append("woo")
+    list.append("plop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -122,7 +140,7 @@ class LinkedListTest < Minitest::Test
     list.append("beep")
     list.append("boop")
     list.prepend("doop")
-    list.insert(5, "five")
+    list.insert(5, "bloop")
     assert_equal 10, list.count
   end
 
@@ -138,7 +156,7 @@ class LinkedListTest < Minitest::Test
 
   def test_to_other_string
     list = LinkedList.new
-    list.append("woo")
+    list.append("dop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -147,8 +165,8 @@ class LinkedListTest < Minitest::Test
     list.append("beep")
     list.append("boop")
     list.prepend("doop")
-    list.insert(5, "five")
-    assert_equal "doop deep woo shi boom shu five blop beep boop", list.to_string
+    list.insert(5, "plop")
+    assert_equal "doop deep boom dop plop shi shu blop beep boop", list.to_string
   end
 
   def test_edge_string
@@ -163,7 +181,7 @@ class LinkedListTest < Minitest::Test
 
   def test_more_edge_strings
     list = LinkedList.new
-    list.append("woo")
+    list.append("dop")
     list.append("shi")
     list.append("shu")
     list.append("blop")
@@ -172,8 +190,8 @@ class LinkedListTest < Minitest::Test
     list.append("beep")
     list.append("boop")
     list.prepend("doop")
-    list.insert(5, "five")
-    assert_equal "doop deep woo shi boom shu five blop beep boop", list.to_s
+    list.insert(5, "plop")
+    assert_equal "doop deep boom dop plop shi shu blop beep boop", list.to_string
   end
 
 

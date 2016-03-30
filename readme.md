@@ -7,6 +7,8 @@ jb.count - Tells you how many beats are in the list
 
 jb.play - Plays your beats
 
+jb.which_beats? - Shows you valid beats
+
 ####  List Methods #
 list.head - Returns the first node
 

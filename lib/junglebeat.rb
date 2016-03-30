@@ -19,6 +19,10 @@ class Junglebeat
     @list.count
   end
 
+  def which_beats?
+    @list.which_beats?
+  end
+
   def play
     beats = @list
     `say -r 400 -v "Bad News" #{beats}`

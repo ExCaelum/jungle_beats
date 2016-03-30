@@ -6,19 +6,24 @@ class LinkedList
   def initialize
     @head = nil
     @string = ""
+    @valid_beats = ["beep", "bleep", "blop", "bloop", "boom", "boop", "bop", "dee", "deep", "ditt", "doo", "doop", "dop", "hoo", "plop", "shi", "shu", "shut", "suu"]
   end
 
   def append(data)
-    if @head == nil
-      @head = Node.new(data)
+    if @valid_beats.include?(data) == false
+      "Please enter a valid beat, to see a list of valid beats enter 'which_beats?'"
     else
-      current_node = @head
-      while current_node.next_node != nil
-        current_node = current_node.next_node
+      if @head == nil
+        @head = Node.new(data)
+      else
+        current_node = @head
+        while current_node.next_node != nil
+          current_node = current_node.next_node
+        end
+        current_node.next_node = Node.new(data)
       end
-      current_node.next_node = Node.new(data)
+      data
     end
-    data
   end
 
   def prepend(data)
@@ -28,16 +33,24 @@ class LinkedList
   end
 
   def insert(position, data)
-    position_counter = 0
+    position_counter = 1
     current_node = @head
-    while position_counter != position
-      current_node = current_node.next_node
-      position_counter += 1
+    if position == 0
+      "Error, please select valid position"
+    elsif position == 1
+      next_node = @head
+      @head = Node.new(data)
+      @head.next_node = next_node
+    else
+      while position_counter != position - 1
+        current_node = current_node.next_node
+        position_counter += 1
+      end
+      new_node = Node.new(data)
+      next_node = current_node.next_node
+      current_node.next_node = new_node
+      new_node.next_node = next_node
     end
-    new_node = Node.new(data)
-    next_node = current_node.next_node
-    current_node.next_node = new_node
-    new_node.next_node = next_node
   end
 
   def find(position, element)
@@ -105,6 +118,10 @@ class LinkedList
       current_node = current_node.next_node
     end
     @string.rstrip
+
+    def which_beats?
+      @valid_beats
+    end
   end
 
 
