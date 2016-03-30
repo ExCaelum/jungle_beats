@@ -11,8 +11,7 @@ class NodeTest < Minitest::Test
 
   def test_node_has_name
     node = Node.new("plop")
-    node = node.data
-    assert_equal "plop", node
+    assert_equal "plop", node.data
   end
 
   def test_next_node_nil_when_empty

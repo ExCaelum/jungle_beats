@@ -15,4 +15,8 @@ class Junglebeat
     data
   end
 
+  def count
+    @list.count
+  end
+
 end

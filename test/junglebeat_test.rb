@@ -28,4 +28,11 @@ class JunglebeatTest < Minitest::Test
     assert_equal "doo", jb.list.head.next_node.data
   end
 
+  def test_junglebeat_can_count
+    jb = Junglebeat.new
+    jb.append("deep doo ditt")
+    jb.append("woo hoo shut")
+    assert_equal 6, jb.count
+  end
+
 end
