@@ -1,5 +1,9 @@
 ## Jungle Beats
-### Methods #
+
+#### Jungle Beat Methods
+jb.append(data) - Take the data and places it at the end of the linked list. (Capable of handling more than one node at a time)
+
+####  List Methods #
 list.head - Returns the first node
 
 list.append(data) - Creates a new node at the end of the list
