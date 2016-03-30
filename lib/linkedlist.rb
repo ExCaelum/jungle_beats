@@ -118,11 +118,10 @@ class LinkedList
       current_node = current_node.next_node
     end
     @string.rstrip
-
-    def which_beats?
-      @valid_beats
-    end
   end
 
+  def which_beats?
+    @valid_beats
+  end
 
 end

@@ -29,7 +29,7 @@ class Junglebeat
 
   def play
     beats = @list
-    `say -r 400 -v "Bad News" #{beats}`
+    `say -r 50 -v boing #{beats}`
   end
 
 end

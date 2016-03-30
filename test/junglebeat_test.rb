@@ -44,11 +44,10 @@ class JunglebeatTest < Minitest::Test
 
 
   def test_play_jungle_drums
-    skip
     jb = Junglebeat.new
     beats = jb.append("deep doo ditt")
     beats += jb.append("plop hoo shu")
-    assert_equal `say -r 400 -v "Bad News" #{beats}`, jb.play
+    assert_equal `say -r 50 -v boing #{beats}`, jb.play
   end
 
 end
