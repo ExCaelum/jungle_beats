@@ -12,6 +12,8 @@ list.find(positon, element) - Find the position, then return it's data, and howe
 
 list.includes?(data) - Tells you whether or not there is a node with that data in the LinkedList
 
+list.pop - Returns and removes the last element of the list
+
 list.to_string - Returns the data of every node as a string
 
 list.count - Tells how many nodes are in the list
