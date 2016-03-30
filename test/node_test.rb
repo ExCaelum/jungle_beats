@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './node'
+require '../lib/node'
 
 class NodeTest < Minitest::Test
 

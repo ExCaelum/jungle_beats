@@ -1,2 +1,2 @@
-require './node'
-require './linkedlist'
+require_relative 'node'
+require_relative 'linkedlist'

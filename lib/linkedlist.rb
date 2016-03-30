@@ -1,4 +1,4 @@
-require './node.rb'
+require_relative 'node'
 
 class LinkedList
   attr_reader :head, :count
@@ -10,6 +10,7 @@ class LinkedList
   end
 
   def append(data)
+    @count += 1
     if @head == nil
       @head = Node.new(data)
     else
@@ -19,8 +20,28 @@ class LinkedList
       end
       current_node.next_node = Node.new(data)
     end
-    @count += 1
     data
+  end
+
+  def prepend(data)
+    @count += 1
+    next_node = @head
+    @head = Node.new(data)
+    @head.next_node = next_node
+  end
+
+  def insert(position, data)
+    @count += 1
+    position_counter = 0
+    current_node = @head
+    while position_counter != position
+      current_node = current_node.next_node
+      position_counter += 1
+    end
+    new_node = Node.new(data)
+    next_node = current_node.next_node
+    current_node.next_node = new_node
+    new_node.next_node = next_node
   end
 
   def to_string

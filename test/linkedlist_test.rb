@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './LinkedList'
+require '../lib/linkedlist'
 require 'pry'
 
 class LinkedListTest < Minitest::Test
@@ -15,48 +15,57 @@ class LinkedListTest < Minitest::Test
     assert_equal nil, list.head
   end
 
-  def test_list_has_access_to_node
-    list = LinkedList.new
-    assert_equal "doop", list.append("doop")
-  end
-
-  def test_appended_node_is_head
+  def test_first_node_is_head
     list = LinkedList.new
     list.append("doop")
-    result = list.head.data
-    assert_equal "doop", result
+    assert_equal "doop", list.head.data
   end
 
   def test_next_node_is_nil
     list = LinkedList.new
     list.append("doop")
-    result = list.head.next_node
-    assert_equal nil, result
+    assert_equal nil, list.head.next_node
   end
 
-  def test_new_node_is_tail
+  def test_appended_node_is_tail
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
-    result = list.head.next_node.data
-    assert_equal "deep", result
+    assert_equal "deep", list.head.next_node.data
   end
 
+  def test_prepended_node_is_head
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+  end
 
-  def test_amount_of_nodes
+  def test_insert_node
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    list.insert(1, "woo")
+    assert_equal "woo", list.head.next_node.next_node.data
+  end
+
+  def test_count_nodes
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
-    result = list.count
-    assert_equal 2, result
+    list.prepend("dop")
+    assert_equal 3, list.count
   end
 
-  def test_data_of_nodes
+  def test_to_string
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
-    result = list.to_string
-    assert_equal "doop deep", result
+    list.prepend("dop")
+    list.append("suu")
+    list.prepend("plop")
+    assert_equal "plop dop doop deep suu", list.to_string
   end
 
 end
