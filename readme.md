@@ -9,6 +9,8 @@ jb.play - Plays your beats
 
 jb.which_beats? - Shows you valid beats
 
+jb.all - Shows you all the beats currently in your list
+
 ####  List Methods #
 list.head - Returns the first node
 

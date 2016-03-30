@@ -23,6 +23,10 @@ class Junglebeat
     @list.which_beats?
   end
 
+  def all
+    @list.to_string
+  end
+
   def play
     beats = @list
     `say -r 400 -v "Bad News" #{beats}`

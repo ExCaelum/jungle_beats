@@ -31,15 +31,24 @@ class JunglebeatTest < Minitest::Test
   def test_junglebeat_can_count
     jb = Junglebeat.new
     jb.append("deep doo ditt")
-    jb.append("woo hoo shut")
+    jb.append("plop hoo shut")
     assert_equal 6, jb.count
   end
 
+  def test_junglebeat_can_display
+    jb = Junglebeat.new
+    jb.append("deep doo ditt")
+    jb.append("plop hoo shut")
+    assert_equal "deep doo ditt plop hoo shut", jb.all
+  end
+
+
   def test_play_jungle_drums
+    skip
     jb = Junglebeat.new
     beats = jb.append("deep doo ditt")
-    beats += jb.append("woo hoo shu")
-    assert_equal `say -r 400 -v "Bad News" "#{beats}`, jb.play
+    beats += jb.append("plop hoo shu")
+    assert_equal `say -r 400 -v "Bad News" #{beats}`, jb.play
   end
 
 end
