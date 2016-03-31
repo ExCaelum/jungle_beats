@@ -61,7 +61,6 @@ class JunglebeatTest < Minitest::Test
 
 
   def test_play_jungle_drums
-    skip
     jb = Junglebeat.new
     beats = jb.append("boom deep plop")
     beats += jb.append("plop hoo shu")
