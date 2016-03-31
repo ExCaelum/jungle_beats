@@ -3,11 +3,11 @@
 #### Jungle Beat Methods
 jb.append(data) - Take the data and places it at the end of the linked list. (Capable of handling more than one node at a time)
 
+jb.prepend(data) - Takes the data, and places it at the beginning of the linked list.
+
 jb.count - Tells you how many beats are in the list
 
 jb.play - Plays your beats
-
-jb.which_beats? - Shows you valid beats
 
 jb.all - Shows you all the beats currently in your list
 

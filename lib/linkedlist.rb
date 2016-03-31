@@ -6,24 +6,19 @@ class LinkedList
   def initialize
     @head = nil
     @string = ""
-    @valid_beats = ["beep", "bleep", "blop", "bloop", "boom", "boop", "bop", "dee", "deep", "ditt", "doo", "doop", "dop", "hoo", "plop", "shi", "shu", "shut", "suu"]
   end
 
   def append(data)
-    if @valid_beats.include?(data) == false
-      "Please enter a valid beat, to see a list of valid beats enter 'which_beats?'"
+    if @head == nil
+      @head = Node.new(data)
     else
-      if @head == nil
-        @head = Node.new(data)
-      else
-        current_node = @head
-        while current_node.next_node != nil
-          current_node = current_node.next_node
-        end
-        current_node.next_node = Node.new(data)
+      current_node = @head
+      while current_node.next_node != nil
+        current_node = current_node.next_node
       end
-      data
+      current_node.next_node = Node.new(data)
     end
+    data
   end
 
   def prepend(data)
@@ -120,8 +115,5 @@ class LinkedList
     @string.rstrip
   end
 
-  def which_beats?
-    @valid_beats
-  end
 
 end

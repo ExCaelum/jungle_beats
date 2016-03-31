@@ -34,11 +34,6 @@ class LinkedListTest < Minitest::Test
     assert_equal "deep", list.head.next_node.data
   end
 
-  def test_cant_append_invalid_beats
-    list = LinkedList.new
-    assert_equal "Please enter a valid beat, to see a list of valid beats enter 'which_beats?'", list.append("woo")
-  end
-
   def test_prepended_node_is_head
     list = LinkedList.new
     list.append("plop")

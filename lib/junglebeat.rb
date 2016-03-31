@@ -15,12 +15,16 @@ class Junglebeat
     data
   end
 
-  def count
-    @list.count
+  def prepend(data)
+    nodes = data.split
+    nodes.map do |data|
+      @list.prepend(data)
+    end
+    count
   end
 
-  def which_beats?
-    @list.which_beats?
+  def count
+    @list.count
   end
 
   def all
@@ -28,8 +32,8 @@ class Junglebeat
   end
 
   def play
-    beats = @list
-    `say -r 50 -v boing #{beats}`
+    nodes = @list
+    `say -r 50 -v "Bad News" #{nodes}`
   end
 
 end
