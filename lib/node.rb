@@ -6,5 +6,4 @@ class Node
     @data = data
     @next_node = next_node
   end
-
 end

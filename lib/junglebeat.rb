@@ -35,5 +35,4 @@ class Junglebeat
     nodes = @list
     `say -r 50 -v "Bad News" #{nodes}`
   end
-
 end
