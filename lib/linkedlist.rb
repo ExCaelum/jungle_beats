@@ -1,14 +1,16 @@
 require_relative 'node'
 
 class LinkedList
-  attr_reader :head
+  attr_reader :head, :count
 
   def initialize
     @head = nil
     @string = ""
+    @count = 0
   end
 
   def append(data)
+    @count +=1
     if @head == nil
       @head = Node.new(data)
     else
@@ -22,15 +24,19 @@ class LinkedList
   end
 
   def prepend(data)
+    @count +=1
     next_node = @head
     @head = Node.new(data)
     @head.next_node = next_node
   end
 
   def insert(position, data)
+    @count += 1
     position_counter = 1
     current_node = @head
-    if position == 0
+    if position <= 0
+      "Error, please select valid position"
+    elsif position > @count
       "Error, please select valid position"
     elsif position == 1
       next_node = @head
@@ -78,23 +84,18 @@ class LinkedList
   end
 
   def pop
-    current_node = @head
-    while current_node.next_node.next_node != nil
-      current_node = current_node.next_node
+    if @head == nil
+      "Error, list is empty"
+    else
+      @count -= 1
+      current_node = @head
+      while current_node.next_node.next_node != nil
+        current_node = current_node.next_node
+      end
+      popped_string = current_node.next_node.data
+      current_node.next_node = nil
+      popped_string
     end
-    popped_string = current_node.next_node.data
-    current_node.next_node = nil
-    popped_string
-  end
-
-  def count
-    current_node = @head
-    counter = 1
-    while current_node.next_node != nil
-      counter += 1
-      current_node = current_node.next_node
-    end
-    counter
   end
 
   def to_string
@@ -117,3 +118,15 @@ class LinkedList
 
 
 end
+
+
+# def count
+#   current_node = @head
+#   counter = 1
+#   while current_node.next_node != nil
+#     counter += 1
+#     current_node = current_node.next_node
+#   end
+#   counter
+# end
+# Old count method before turning it into an instance variable

@@ -64,6 +64,26 @@ class LinkedListTest < Minitest::Test
     assert_equal "plop", list.head.data
   end
 
+  def test_insert_node_at_non_existent_position
+    list = LinkedList.new
+    list.append("boop")
+    list.append("shi")
+    list.prepend("shu")
+    list.append("blop")
+    list.append("bleep")
+    assert_equal "Error, please select valid position", list.insert(0, "plop")
+  end
+
+  def test_insert_at_position_too_large
+    list = LinkedList.new
+    list.append("boop")
+    list.append("shi")
+    list.prepend("shu")
+    list.append("blop")
+    list.append("bleep")
+    assert_equal "Error, please select valid position", list.insert(27, "plop")
+  end
+
   def test_find_nodes
     list = LinkedList.new
     list.append("plop")
@@ -114,6 +134,11 @@ class LinkedListTest < Minitest::Test
     assert_equal "blop", list.pop
     assert_equal "shu", list.pop
     assert_equal "deep plop shi", list.to_string
+  end
+
+  def test_pop_empty_list
+    list = LinkedList.new
+    assert_equal "Error, list is empty", list.pop
   end
 
   def test_count_nodes
